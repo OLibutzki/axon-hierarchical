@@ -1,1 +1,11 @@
-"# axon-hierarchical" 
+In this sample I try to use the Axon Framework in conunction with Spring's Hierachical Application Contexts.
+
+There is a root context built by [AxonHierarchicalApplication](https://github.com/OLibutzki/axon-hierarchical/blob/06094ddfd8ce0146bc51ffbffe67ac6a8b0b1735/src/main/java/de/libutzki/axon/axonhierarchical/AxonHierarchicalApplication.java) which imports [AxonConfiguration](https://github.com/OLibutzki/axon-hierarchical/blob/06094ddfd8ce0146bc51ffbffe67ac6a8b0b1735/src/main/java/de/libutzki/axon/axonhierarchical/axon/AxonConfiguration.java). AxonConfiguration imports all the Axon Auto-Configurations which are included in the *spring.factories* file of the *axon-spring-boot-autoconfigure* module.
+
+[Module1Configuration](https://github.com/OLibutzki/axon-hierarchical/blob/06094ddfd8ce0146bc51ffbffe67ac6a8b0b1735/src/main/java/de/libutzki/axon/axonhierarchical/module1/Module1Configuration.java) is used a child application context. There is a simple command [SomeCommand](https://github.com/OLibutzki/axon-hierarchical/blob/06094ddfd8ce0146bc51ffbffe67ac6a8b0b1735/src/main/java/de/libutzki/axon/axonhierarchical/module1/SomeCommand.java), a CommandHandler [SomeCommandHandler](https://github.com/OLibutzki/axon-hierarchical/blob/06094ddfd8ce0146bc51ffbffe67ac6a8b0b1735/src/main/java/de/libutzki/axon/axonhierarchical/module1/SomeCommandHandler.java) and a client ([Module1Runner](https://github.com/OLibutzki/axon-hierarchical/blob/06094ddfd8ce0146bc51ffbffe67ac6a8b0b1735/src/main/java/de/libutzki/axon/axonhierarchical/module1/Module1Runner.java) which interacts with the Axon CommandGateway.
+
+The general idea of this approach is:
+* The root context runs all the infrastructure stuff like EventStore, EventBus, CommandGateway,...
+* The child context also uses Axon, but the infrastructural beans are not created again, because they are already available via inheritence from the root/parent context. The only reason the child module is configured like an Axon module is that the components/aggegrates and the contained CommandHandlers, EventHandlers and QueryHandlers should be scanned ans registered.
+
+Unfortunately an exception occurs whenever I start this application. Any help how to achieve my goal is highly appreciated.
