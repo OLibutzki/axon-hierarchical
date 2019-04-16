@@ -1,10 +1,13 @@
 package de.libutzki.axon.axonhierarchical.module1;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-
-@Value
-@RequiredArgsConstructor(staticName = "of")
 public class SomeCommand {
-	private String payload;
+	private final String payload;
+
+	public SomeCommand( final String payload ) {
+		this.payload = payload;
+	}
+
+	public String getPayload( ) {
+		return payload;
+	}
 }
