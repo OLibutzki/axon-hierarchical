@@ -16,20 +16,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({
-	  MetricsAutoConfiguration.class,
-	  MicrometerMetricsAutoConfiguration.class,
-	  EventProcessingAutoConfiguration.class,
-	  AxonAutoConfiguration.class,
-	  JpaAutoConfiguration.class,
-	  JpaEventStoreAutoConfiguration.class,
-	  JdbcAutoConfiguration.class,
-	  TransactionAutoConfiguration.class,
-	  NoOpTransactionAutoConfiguration.class,
-	  InfraConfiguration.class,
-	  ObjectMapperAutoConfiguration.class,
-	  AxonServerAutoConfiguration.class
-})
+@Import( {
+		MetricsAutoConfiguration.class,
+		MicrometerMetricsAutoConfiguration.class,
+		EventProcessingAutoConfiguration.class,
+		AxonAutoConfiguration.class,
+		JpaAutoConfiguration.class,
+		JpaEventStoreAutoConfiguration.class,
+		JdbcAutoConfiguration.class,
+		TransactionAutoConfiguration.class,
+		NoOpTransactionAutoConfiguration.class,
+		InfraConfiguration.class,
+		ObjectMapperAutoConfiguration.class,
+		AxonServerAutoConfiguration.class
+} )
 public class AxonConfiguration {
 
 }
