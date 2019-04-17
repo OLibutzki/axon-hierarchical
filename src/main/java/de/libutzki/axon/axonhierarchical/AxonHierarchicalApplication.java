@@ -6,14 +6,17 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import de.libutzki.axon.axonhierarchical.axon.AxonConfiguration;
 import de.libutzki.axon.axonhierarchical.module1.Module1Configuration;
+import de.libutzki.axon.axonhierarchical.module2.Module2Configuration;
 
 @SpringBootConfiguration
 public class AxonHierarchicalApplication {
 
 	public static void main( final String[] args ) {
 		new SpringApplicationBuilder( )
-				.sources( AxonConfiguration.class ).web( WebApplicationType.NONE )
-				.child( Module1Configuration.class ).web( WebApplicationType.NONE )
+				.sources( AxonHierarchicalApplication.class ).web( WebApplicationType.NONE )
+				.child( AxonConfiguration.class ).web( WebApplicationType.NONE )
+				.sibling( Module1Configuration.class ).web( WebApplicationType.NONE )
+				.sibling( Module2Configuration.class ).web( WebApplicationType.NONE )
 				.run( args );
 	}
 

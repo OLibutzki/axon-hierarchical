@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.libutzki.axon.axonhierarchical.module1;
+package de.libutzki.axon.axonhierarchical.shared;
 
 import java.util.Collection;
 

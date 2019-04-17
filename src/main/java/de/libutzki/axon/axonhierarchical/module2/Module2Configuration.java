@@ -1,4 +1,4 @@
-package de.libutzki.axon.axonhierarchical.module1;
+package de.libutzki.axon.axonhierarchical.module2;
 
 import org.axonframework.eventhandling.EventBus;
 import org.axonframework.eventhandling.gateway.DefaultEventGateway;
@@ -30,7 +30,7 @@ import de.libutzki.axon.axonhierarchical.shared.HierarchyAwareSpringAxonAutoConf
 @Configuration
 @ComponentScan
 @AnnotationDriven
-@PropertySource( "classpath:de/libutzki/axon/axonhierarchical/module1/application.properties" )
+@PropertySource( "classpath:de/libutzki/axon/axonhierarchical/module2/application.properties" )
 @Import( {
 		DataSourceAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class,
@@ -49,7 +49,7 @@ import de.libutzki.axon.axonhierarchical.shared.HierarchyAwareSpringAxonAutoConf
 		HierarchyAwareSpringAxonAutoConfigurer.ImportSelector.class,
 		PropertyPlaceholderAutoConfiguration.class
 } )
-public class Module1Configuration {
+public class Module2Configuration {
 	@Bean
 	@ConditionalOnMissingBean
 	public EventGateway eventGateway( final EventBus eventBus ) {

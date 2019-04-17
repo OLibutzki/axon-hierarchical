@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.libutzki.axon.axonhierarchical.module1;
+package de.libutzki.axon.axonhierarchical.shared;
 
 import static org.axonframework.common.ReflectionUtils.methodsOf;
 import static org.axonframework.common.annotation.AnnotationUtils.findAnnotationAttributes;
@@ -165,8 +165,8 @@ public class HierarchyAwareSpringAxonAutoConfigurer implements ImportBeanDefinit
 		findComponent( EventStorageEngine.class )
 				.ifPresent( ese -> configurer.configureEmbeddedEventStore( c -> getBean( ese, c ) ) );
 		findComponent( EventBus.class ).ifPresent( eventBus -> configurer.configureEventBus( c -> getBean( eventBus, c ) ) );
-		findComponent( Serializer.class )
-				.ifPresent( serializer -> configurer.configureSerializer( c -> getBean( serializer, c ) ) );
+//		findComponent( Serializer.class )
+//				.ifPresent( serializer -> configurer.configureSerializer( c -> getBean( serializer, c ) ) );
 		findComponent( Serializer.class, "eventSerializer" )
 				.ifPresent( eventSerializer -> configurer.configureEventSerializer( c -> getBean( eventSerializer, c ) ) );
 		findComponent( Serializer.class, "messageSerializer" ).ifPresent(
@@ -435,8 +435,8 @@ public class HierarchyAwareSpringAxonAutoConfigurer implements ImportBeanDefinit
 	}
 
 	/**
-	 * Implementation of an {@link ImportSelector} that enables the import of the {@link HierarchyAwareSpringAxonAutoConfigurer}
-	 * after all {@code @Configuration} beans have been processed.
+	 * Implementation of an {@link ImportSelector} that enables the import of the
+	 * {@link HierarchyAwareSpringAxonAutoConfigurer} after all {@code @Configuration} beans have been processed.
 	 */
 	public static class ImportSelector implements DeferredImportSelector {
 
