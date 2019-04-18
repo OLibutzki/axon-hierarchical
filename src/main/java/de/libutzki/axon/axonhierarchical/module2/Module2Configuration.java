@@ -17,6 +17,7 @@ import org.axonframework.springboot.autoconfig.ObjectMapperAutoConfiguration;
 import org.axonframework.springboot.autoconfig.TransactionAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -24,12 +25,19 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import de.libutzki.axon.axonhierarchical.shared.HierarchyAwareSpringAxonAutoConfigurer;
 
 @Configuration
 @ComponentScan
 @AnnotationDriven
+@EnableTransactionManagement
+@EntityScan( {
+		"org.axonframework.eventhandling.tokenstore",
+		"org.axonframework.modelling.saga.repository.jpa",
+		"de.libutzki.axon.axonhierarchical.module2.entity"
+} )
 @PropertySource( "classpath:de/libutzki/axon/axonhierarchical/module2/application.properties" )
 @Import( {
 		DataSourceAutoConfiguration.class,

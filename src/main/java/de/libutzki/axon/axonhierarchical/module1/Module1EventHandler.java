@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import de.libutzki.axon.axonhierarchical.module2.Module2AggregatePayloadChangedEvent;
 import de.libutzki.axon.axonhierarchical.module2.Module2Event;
 
 @Component
@@ -19,6 +20,11 @@ public class Module1EventHandler {
 
 	@EventHandler
 	public void on( final Module2Event someEvent ) {
+		log.info( "Event handled: " + someEvent );
+	}
+
+	@EventHandler
+	public void on( final Module2AggregatePayloadChangedEvent someEvent ) {
 		log.info( "Event handled: " + someEvent );
 	}
 }

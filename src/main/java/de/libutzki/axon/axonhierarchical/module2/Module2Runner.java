@@ -1,5 +1,7 @@
 package de.libutzki.axon.axonhierarchical.module2;
 
+import javax.transaction.Transactional;
+
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventhandling.gateway.EventGateway;
 import org.slf4j.Logger;
@@ -21,6 +23,7 @@ public class Module2Runner implements CommandLineRunner {
 	}
 
 	@Override
+	@Transactional
 	public void run( final String... args ) throws Exception {
 		final Module2Command command = new Module2Command( "Test Command-Payload" );
 		log.info( "Sending command: " + command );
@@ -28,6 +31,13 @@ public class Module2Runner implements CommandLineRunner {
 		final Module2Event event = new Module2Event( "Test Event-Payload" );
 		log.info( "Publishing event: " + event );
 		eventGateway.publish( event );
+		final CreateModule2AggregateCommand createModule2AggregateCommand = new CreateModule2AggregateCommand( "1", "Initial Payload" );
+		log.info( "Sending command: " + createModule2AggregateCommand );
+		commandGateway.sendAndWait( createModule2AggregateCommand );
+		final Module2AggregatePayloadChangeCommand module2AggregatePayloadChangedCommand = new Module2AggregatePayloadChangeCommand( "1", "Changed Payload" );
+		log.info( "Sending command: " + module2AggregatePayloadChangedCommand );
+		commandGateway.sendAndWait( module2AggregatePayloadChangedCommand );
+
 	}
 
 }
