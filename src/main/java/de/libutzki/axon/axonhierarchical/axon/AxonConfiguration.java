@@ -69,9 +69,4 @@ public class AxonConfiguration {
 	public EntityManagerProvider entityManagerProvider( ) {
 		return new ContainerManagedEntityManagerProvider( );
 	}
-
-//	@Autowired
-//	public void configure( final EventProcessingConfigurer config ) {
-//		config.usingSubscribingEventProcessors( );
-//	}
 }
