@@ -30,6 +30,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
+import de.libutzki.axon.axonhierarchical.shared.AxonDelegatingCommandBusConfiguration;
 import de.libutzki.axon.axonhierarchical.shared.ExportedBeanPostProcessor;
 
 @Configuration
@@ -44,6 +45,7 @@ import de.libutzki.axon.axonhierarchical.shared.ExportedBeanPostProcessor;
 		JdbcAutoConfiguration.class,
 		TransactionAutoConfiguration.class,
 		NoOpTransactionAutoConfiguration.class,
+		AxonDelegatingCommandBusConfiguration.class,
 		AxonAutoConfiguration.class,
 		InfraConfiguration.class,
 		ObjectMapperAutoConfiguration.class,
